@@ -242,12 +242,13 @@
     .platform-badge:hover,.check-chip:hover .pill{transform:none;}
   }
 </style>
+<script data-goatcounter="https://nurdaulet.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
 <body>
 
 <header>
   <div class="brand">отзыв<span>·</span>аудит</div>
-  <button class="nav-cta" id="navCta">Оставить заявку</button>
+  <button class="nav-cta" id="navCta" data-goatcounter-click="nav-cta">Оставить заявку</button>
 </header>
 
 <div class="hero">
@@ -255,7 +256,7 @@
     <h1>Все отзывы о вашем бизнесе в одном разборе, без ручного чтения.</h1>
     <p class="sub">Собираем отзывы с 2GIS, Google, Яндекс.Карт и соцсетей, находим, на что чаще всего жалуются клиенты, и присылаем менеджерам конкретный список того, что стоит исправить, с примерами.</p>
     <div class="hero-ctas">
-      <button class="btn-primary" id="heroCta">Оставить заявку</button>
+      <button class="btn-primary" id="heroCta" data-goatcounter-click="hero-cta">Оставить заявку</button>
       <button class="btn-ghost" id="scrollHow">Как это устроено</button>
     </div>
   </div>
@@ -359,7 +360,7 @@
 <section id="waitlist" style="padding-bottom:0;">
   <div class="form-section">
     <div class="form-wrap">
-      <h2>Оставьте заявку. Разберём ваши отзывы одними из первых.</h2>
+      <h2>Оставьте заявку. Одними из первых получите бесплатный доступ к продукту.</h2>
 
       <form id="waitlistForm" action="https://formspree.io/f/xwlkgdrq" method="POST">
         <div class="field">
@@ -494,7 +495,7 @@ document.getElementById('waitlistForm').addEventListener('submit', async (e) => 
     if(!res.ok){ throw new Error('formspree error'); }
 
     bumpCounter('form_submissions_total');
-    statusEl.textContent = 'Спасибо! Мы свяжемся с вами в ближайшее время.';
+    statusEl.textContent = 'Спасибо! Вы в числе первых, кто получит бесплатный доступ к продукту.';
     statusEl.className = 'status-msg ok';
     form.reset();
   }catch(err){
