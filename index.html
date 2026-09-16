@@ -220,6 +220,19 @@
 
   footer{text-align:center;padding:22px 24px 44px;font-size:.95rem;color:var(--text-dim);}
 
+  /* ---------- language switcher ---------- */
+  .lang-switch{display:inline-flex;gap:4px;border:1px solid rgba(245,246,250,.2);border-radius:100px;padding:3px;}
+  .lang-switch button{
+    background:transparent;border:none;color:var(--text-dim);font-family:inherit;
+    font-size:.85rem;font-weight:600;padding:6px 12px;border-radius:100px;cursor:pointer;
+    transition:background .15s ease, color .15s ease;
+  }
+  .lang-switch button.active{background:var(--accent);color:#fff;}
+  .lang-switch button:not(.active):hover{color:var(--text);}
+  header{gap:12px;}
+  footer .lang-switch{margin-top:14px;justify-content:center;}
+  footer .lang-switch button{color:var(--text-dim);}
+
   @media (max-width:760px){
     .hero{grid-template-columns:1fr;padding-top:44px;gap:40px;}
     .mock-stack{margin-top:16px;}
@@ -247,17 +260,24 @@
 <body>
 
 <header>
-  <div class="brand">отзыв<span>·</span>аудит</div>
-  <button class="nav-cta" id="navCta" data-goatcounter-click="nav-cta">Оставить заявку</button>
+  <div class="brand">OiSense</div>
+  <div style="display:flex;align-items:center;gap:14px;">
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button type="button" data-lang="ru">РУС</button>
+      <button type="button" data-lang="kk">ҚАЗ</button>
+      <button type="button" data-lang="en">ENG</button>
+    </div>
+    <button class="nav-cta" id="navCta" data-goatcounter-click="nav-cta" data-i18n="nav.cta">Оставить заявку</button>
+  </div>
 </header>
 
 <div class="hero">
   <div>
-    <h1>Все отзывы о вашем бизнесе в одном разборе, без ручного чтения.</h1>
-    <p class="sub">Собираем отзывы с 2GIS, Google, Яндекс.Карт и соцсетей, находим, на что чаще всего жалуются клиенты, и присылаем менеджерам конкретный список того, что стоит исправить, с примерами.</p>
+    <h1 data-i18n="hero.title">Все отзывы о вашем бизнесе в одном разборе, без ручного чтения.</h1>
+    <p class="sub" data-i18n="hero.sub">Собираем отзывы с 2GIS, Google, Яндекс.Карт и соцсетей, находим, на что чаще всего жалуются клиенты, и присылаем менеджерам конкретный список того, что стоит исправить, с примерами.</p>
     <div class="hero-ctas">
-      <button class="btn-primary" id="heroCta" data-goatcounter-click="hero-cta">Оставить заявку</button>
-      <button class="btn-ghost" id="scrollHow">Как это устроено</button>
+      <button class="btn-primary" id="heroCta" data-goatcounter-click="hero-cta" data-i18n="nav.cta">Оставить заявку</button>
+      <button class="btn-ghost" id="scrollHow" data-i18n="hero.cta2">Как это устроено</button>
     </div>
   </div>
 
@@ -270,8 +290,8 @@
           <div class="mock-stars">★☆☆☆☆</div>
         </div>
       </div>
-      <p class="mock-text">Заказала доставку, привезли <mark>остывшую еду</mark>, а упаковка была <span class="flagged">повреждена</span>.</p>
-      <div class="mock-tag">Качество упаковки · 9 похожих отзывов за месяц</div>
+      <p class="mock-text" data-i18n-html="mock.b2.text">Заказала доставку, привезли <mark>остывшую еду</mark>, а упаковка была <span class="flagged">повреждена</span>.</p>
+      <div class="mock-tag" data-i18n="mock.b2.tag">Качество упаковки · 9 похожих отзывов за месяц</div>
     </div>
     <div class="mock mock-back b1">
       <div class="mock-head">
@@ -281,8 +301,8 @@
           <div class="mock-stars">★★★☆☆</div>
         </div>
       </div>
-      <p class="mock-text">Место приятное, но <mark>на столах были крошки</mark>, а меню <span class="flagged">давно не обновлялось</span>.</p>
-      <div class="mock-tag">Чистота зала · 6 похожих отзывов за месяц</div>
+      <p class="mock-text" data-i18n-html="mock.b1.text">Место приятное, но <mark>на столах были крошки</mark>, а меню <span class="flagged">давно не обновлялось</span>.</p>
+      <div class="mock-tag" data-i18n="mock.b1.tag">Чистота зала · 6 похожих отзывов за месяц</div>
     </div>
     <div class="mock mock-front">
       <div class="mock-head">
@@ -292,20 +312,20 @@
           <div class="mock-stars">★★☆☆☆</div>
         </div>
       </div>
-      <p class="mock-text">Кофе вкусный, но <mark>ждала заказ почти 20 минут</mark>, хотя людей было немного. Официантка <span class="flagged">не предупредила о задержке</span>, пришлось подходить самой.</p>
-      <div class="mock-tag">Скорость обслуживания · 14 похожих отзывов за месяц</div>
+      <p class="mock-text" data-i18n-html="mock.front.text">Кофе вкусный, но <mark>ждала заказ почти 20 минут</mark>, хотя людей было немного. Официантка <span class="flagged">не предупредила о задержке</span>, пришлось подходить самой.</p>
+      <div class="mock-tag" data-i18n="mock.front.tag">Скорость обслуживания · 14 похожих отзывов за месяц</div>
     </div>
   </div>
 </div>
 
 <section>
   <div class="problem-block">
-    <h2>Отзывы разбросаны по семи местам, и никто их системно не читает</h2>
-    <p class="lead">Мы собираем и разбираем отзывы и комментарии из всех этих источников в одном месте.</p>
+    <h2 data-i18n="problem.title">Отзывы разбросаны по семи местам, и никто их системно не читает</h2>
+    <p class="lead" data-i18n="problem.lead">Мы собираем и разбираем отзывы и комментарии из всех этих источников в одном месте.</p>
     <div class="platform-row">
       <div class="platform-badge"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" /><path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0" /></svg><span class="name">2GIS</span></div>
       <div class="platform-badge"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M20.945 11a9 9 0 1 1 -3.284 -5.997l-2.655 2.392a5.5 5.5 0 1 0 2.119 6.605h-4.125v-3h7.945" /></svg><span class="name">Google</span></div>
-      <div class="platform-badge"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M15 20v-16h-2a4 4 0 0 0 -4 4v1a4 4 0 0 0 4 4h2" /><path d="M9 20l3 -7" /></svg><span class="name">Яндекс.Карты</span></div>
+      <div class="platform-badge"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M15 20v-16h-2a4 4 0 0 0 -4 4v1a4 4 0 0 0 4 4h2" /><path d="M9 20l3 -7" /></svg><span class="name" data-i18n="brand.yandexmaps">Яндекс.Карты</span></div>
       <div class="platform-badge"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M4 8a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4l0 -8" /><path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" /><path d="M16.5 7.5v.01" /></svg><span class="name">Instagram</span></div>
       <div class="platform-badge"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3" /></svg><span class="name">Facebook</span></div>
       <div class="platform-badge"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M19 7.5c-1.333 -3 -3.667 -4.5 -7 -4.5c-5 0 -8 2.5 -8 9s3.5 9 8 9s7 -3 7 -5s-1 -5 -7 -5c-2.5 0 -3 1.25 -3 2.5c0 1.5 1 2.5 2.5 2.5c2.5 0 3.5 -1.5 3.5 -5s-2 -4 -3 -4s-1.833 .333 -2.5 1" /></svg><span class="name">Threads</span></div>
@@ -313,16 +333,16 @@
     </div>
     <div class="problem-grid">
       <div class="problem-cell">
-        <div class="src">2GIS · Google · Яндекс.Карты</div>
-        <p>Новые отзывы появляются каждый день на разных площадках, и у менеджера нет времени проверять каждую.</p>
+        <div class="src" data-i18n="problem.src1">2GIS · Google · Яндекс.Карты</div>
+        <p data-i18n="problem.p1">Новые отзывы появляются каждый день на разных площадках, и у менеджера нет времени проверять каждую.</p>
       </div>
       <div class="problem-cell">
         <div class="src">Instagram · Facebook · Threads · X</div>
-        <p>Жалобы в комментариях и сообщениях теряются среди обычной переписки с подписчиками.</p>
+        <p data-i18n="problem.p2">Жалобы в комментариях и сообщениях теряются среди обычной переписки с подписчиками.</p>
       </div>
       <div class="problem-cell">
-        <div class="src">Итог</div>
-        <p>Повторяющаяся проблема, например долгое ожидание заказа, остаётся незамеченной месяцами.</p>
+        <div class="src" data-i18n="problem.summary">Итог</div>
+        <p data-i18n="problem.p3">Повторяющаяся проблема, например долгое ожидание заказа, остаётся незамеченной месяцами.</p>
       </div>
     </div>
   </div>
@@ -330,27 +350,27 @@
 
 <section id="how">
   <div class="how-wrap">
-  <h2>От разрозненных отзывов до списка задач для команды</h2>
+  <h2 data-i18n="how.title">От разрозненных отзывов до списка задач для команды</h2>
   <div class="step-list">
     <div class="step">
       <div class="step-num">1</div>
       <div>
-        <h3>Подключаете свои площадки</h3>
-        <p>Указываете ссылки на карточки бизнеса в 2GIS, Google, Яндекс.Картах и соцсетях, сервис сам собирает новые отзывы и комментарии.</p>
+        <h3 data-i18n="how.step1.title">Подключаете свои площадки</h3>
+        <p data-i18n="how.step1.p">Указываете ссылки на карточки бизнеса в 2GIS, Google, Яндекс.Картах и соцсетях, сервис сам собирает новые отзывы и комментарии.</p>
       </div>
     </div>
     <div class="step">
       <div class="step-num">2</div>
       <div>
-        <h3>Находим повторяющиеся жалобы</h3>
-        <p>Группируем отзывы по темам: скорость обслуживания, чистота, качество блюд, работа конкретной смены, и показываем, что встречается чаще всего.</p>
+        <h3 data-i18n="how.step2.title">Находим повторяющиеся жалобы</h3>
+        <p data-i18n="how.step2.p">Группируем отзывы по темам: скорость обслуживания, чистота, качество блюд, работа конкретной смены, и показываем, что встречается чаще всего.</p>
       </div>
     </div>
     <div class="step">
       <div class="step-num">3</div>
       <div>
-        <h3>Присылаем разбор с примерами</h3>
-        <p>Готовый отчёт для менеджера: какие проблемы приоритетны, сколько раз они упоминались и цитаты из реальных отзывов в подтверждение.</p>
+        <h3 data-i18n="how.step3.title">Присылаем разбор с примерами</h3>
+        <p data-i18n="how.step3.p">Готовый отчёт для менеджера: какие проблемы приоритетны, сколько раз они упоминались и цитаты из реальных отзывов в подтверждение.</p>
       </div>
     </div>
   </div>
@@ -360,40 +380,40 @@
 <section id="waitlist" style="padding-bottom:0;">
   <div class="form-section">
     <div class="form-wrap">
-      <h2>Оставьте заявку. Одними из первых получите бесплатный доступ к продукту.</h2>
+      <h2 data-i18n="form.title">Оставьте заявку. Одними из первых получите бесплатный доступ к продукту.</h2>
 
       <form id="waitlistForm" action="https://formspree.io/f/xwlkgdrq" method="POST">
         <div class="field">
-          <label for="bizName">Название бизнеса</label>
-          <input type="text" id="bizName" name="business" required placeholder="Например, кофейня «Уют»">
+          <label for="bizName" data-i18n="form.business.label">Название бизнеса</label>
+          <input type="text" id="bizName" name="business" required placeholder="Например, кофейня «Starbucks»" data-i18n-placeholder="form.business.placeholder">
         </div>
         <div class="field">
-          <label for="city">Город</label>
+          <label for="city" data-i18n="form.city.label">Город</label>
           <input type="text" id="city" name="city" required placeholder="Алматы">
         </div>
         <div class="field">
-          <label for="contact">Телефон или email для связи</label>
-          <input type="text" id="contact" name="contact" required placeholder="+7 ... или почта">
+          <label for="contact" data-i18n="form.contact.label">Телефон или email для связи</label>
+          <input type="text" id="contact" name="contact" required placeholder="+7 ... или почта" data-i18n-placeholder="form.contact.placeholder">
         </div>
         <div class="field">
-          <label>Где сейчас есть отзывы о вас</label>
+          <label data-i18n="form.platforms.label">Где сейчас есть отзывы о вас</label>
           <div class="checks">
             <label class="check-chip"><input type="checkbox" name="platform" value="2GIS"><span class="pill">2GIS</span></label>
             <label class="check-chip"><input type="checkbox" name="platform" value="Google"><span class="pill">Google</span></label>
-            <label class="check-chip"><input type="checkbox" name="platform" value="Яндекс.Карты"><span class="pill">Яндекс.Карты</span></label>
+            <label class="check-chip"><input type="checkbox" name="platform" value="Яндекс.Карты"><span class="pill" data-i18n="brand.yandexmaps">Яндекс.Карты</span></label>
             <label class="check-chip"><input type="checkbox" name="platform" value="Instagram"><span class="pill">Instagram</span></label>
             <label class="check-chip"><input type="checkbox" name="platform" value="Facebook"><span class="pill">Facebook</span></label>
             <label class="check-chip"><input type="checkbox" name="platform" value="Threads"><span class="pill">Threads</span></label>
             <label class="check-chip"><input type="checkbox" name="platform" value="X"><span class="pill">X</span></label>
-            <label class="check-chip"><input type="checkbox" name="platform" value="Другое"><span class="pill">Другое</span></label>
+            <label class="check-chip"><input type="checkbox" name="platform" value="Другое"><span class="pill" data-i18n="form.other">Другое</span></label>
           </div>
         </div>
         <label class="consent">
           <input type="checkbox" id="consentCheck">
-          <span>Согласен(на) на обработку персональных данных</span>
+          <span data-i18n="form.consent">Согласен(на) на обработку персональных данных</span>
         </label>
         <div class="form-foot">
-          <button type="submit" class="btn-primary" id="submitBtn" disabled>Отправить заявку</button>
+          <button type="submit" class="btn-primary" id="submitBtn" disabled data-i18n="form.submit">Отправить заявку</button>
         </div>
         <div class="status-msg" id="statusMsg"></div>
       </form>
@@ -402,10 +422,180 @@
 </section>
 
 <footer>
-  © <span id="year"></span> отзыв·аудит. Все права защищены.
+  <div>© <span id="year"></span> OiSense. <span data-i18n="footer.rights">Все права защищены.</span></div>
+  <div class="lang-switch" role="group" aria-label="Language">
+    <button type="button" data-lang="ru">РУС</button>
+    <button type="button" data-lang="kk">ҚАЗ</button>
+    <button type="button" data-lang="en">ENG</button>
+  </div>
 </footer>
 
 <script>
+const translations = {
+  ru: {
+    'nav.cta': 'Оставить заявку',
+    'hero.title': 'Все отзывы о вашем бизнесе в одном разборе, без ручного чтения.',
+    'hero.sub': 'Собираем отзывы с 2GIS, Google, Яндекс.Карт и соцсетей, находим, на что чаще всего жалуются клиенты, и присылаем менеджерам конкретный список того, что стоит исправить, с примерами.',
+    'hero.cta2': 'Как это устроено',
+    'mock.front.text': 'Кофе вкусный, но <mark>ждала заказ почти 20 минут</mark>, хотя людей было немного. Официантка <span class="flagged">не предупредила о задержке</span>, пришлось подходить самой.',
+    'mock.front.tag': 'Скорость обслуживания · 14 похожих отзывов за месяц',
+    'mock.b1.text': 'Место приятное, но <mark>на столах были крошки</mark>, а меню <span class="flagged">давно не обновлялось</span>.',
+    'mock.b1.tag': 'Чистота зала · 6 похожих отзывов за месяц',
+    'mock.b2.text': 'Заказала доставку, привезли <mark>остывшую еду</mark>, а упаковка была <span class="flagged">повреждена</span>.',
+    'mock.b2.tag': 'Качество упаковки · 9 похожих отзывов за месяц',
+    'problem.title': 'Отзывы разбросаны по семи местам, и никто их системно не читает',
+    'problem.lead': 'Мы собираем и разбираем отзывы и комментарии из всех этих источников в одном месте.',
+    'brand.yandexmaps': 'Яндекс.Карты',
+    'problem.src1': '2GIS · Google · Яндекс.Карты',
+    'problem.p1': 'Новые отзывы появляются каждый день на разных площадках, и у менеджера нет времени проверять каждую.',
+    'problem.p2': 'Жалобы в комментариях и сообщениях теряются среди обычной переписки с подписчиками.',
+    'problem.summary': 'Итог',
+    'problem.p3': 'Повторяющаяся проблема, например долгое ожидание заказа, остаётся незамеченной месяцами.',
+    'how.title': 'От разрозненных отзывов до списка задач для команды',
+    'how.step1.title': 'Подключаете свои площадки',
+    'how.step1.p': 'Указываете ссылки на карточки бизнеса в 2GIS, Google, Яндекс.Картах и соцсетях, сервис сам собирает новые отзывы и комментарии.',
+    'how.step2.title': 'Находим повторяющиеся жалобы',
+    'how.step2.p': 'Группируем отзывы по темам: скорость обслуживания, чистота, качество блюд, работа конкретной смены, и показываем, что встречается чаще всего.',
+    'how.step3.title': 'Присылаем разбор с примерами',
+    'how.step3.p': 'Готовый отчёт для менеджера: какие проблемы приоритетны, сколько раз они упоминались и цитаты из реальных отзывов в подтверждение.',
+    'form.title': 'Оставьте заявку. Одними из первых получите бесплатный доступ к продукту.',
+    'form.business.label': 'Название бизнеса',
+    'form.business.placeholder': 'Например, кофейня «Уют»',
+    'form.city.label': 'Город',
+    'form.contact.label': 'Телефон или email для связи',
+    'form.contact.placeholder': '+7 ... или почта',
+    'form.platforms.label': 'Где сейчас есть отзывы о вас',
+    'form.other': 'Другое',
+    'form.consent': 'Согласен(на) на обработку персональных данных',
+    'form.submit': 'Отправить заявку',
+    'form.sending': 'Отправляем...',
+    'form.success': 'Спасибо! Вы в числе первых, кто получит бесплатный доступ к продукту.',
+    'form.error': 'Не получилось отправить. Попробуйте ещё раз.',
+    'footer.rights': 'Все права защищены.'
+  },
+  kk: {
+    'nav.cta': 'Өтінім қалдыру',
+    'hero.title': 'Бизнесіңіз туралы барлық пікірлерді қолмен оқымай, бір есептен көріңіз.',
+    'hero.sub': '2GIS, Google, Яндекс Карта және әлеуметтік желілерден пікірлерді жинаймыз, клиенттер ең жиі шағымданатын мәселелерді анықтаймыз және менеджерлерге нақты не түзету керектігінің тізімін мысалдармен жібереміз.',
+    'hero.cta2': 'Бұл қалай жұмыс істейді',
+    'mock.front.text': 'Кофе дәмді, бірақ <mark>тапсырысты 20 минутқа жуық күттім</mark>, адам аз болса да. Даяшы <span class="flagged">кешігу туралы ескертпеді</span>, өзім барып сұрауға тура келді.',
+    'mock.front.tag': 'Қызмет көрсету жылдамдығы · айына 14 ұқсас пікір',
+    'mock.b1.text': 'Орны жағымды, бірақ <mark>үстелдерде қиқым бар еді</mark>, ал мәзір <span class="flagged">ұзақ уақыт жаңартылмаған</span>.',
+    'mock.b1.tag': 'Залдың тазалығы · айына 6 ұқсас пікір',
+    'mock.b2.text': 'Жеткізуге тапсырыс бердім, <mark>суынған тамақ</mark> әкелді, әрі қаптама <span class="flagged">зақымдалған</span> болды.',
+    'mock.b2.tag': 'Қаптама сапасы · айына 9 ұқсас пікір',
+    'problem.title': 'Пікірлер жеті түрлі жерде шашырап жатқандықтан, оларды ешкім жүйелі түрде қадағалап отырмайды.',
+    'problem.lead': 'Біз осы дереккөздердің барлығындағы пікірлерді бір жерге жинап, талдаймыз.',
+    'brand.yandexmaps': 'Яндекс Карта',
+    'problem.src1': '2GIS · Google · Яндекс Карта',
+    'problem.p1': 'Жаңа пікірлер әр түрлі платформаларда күн сайын пайда болады, ал менеджердің әрқайсысын тексеруге уақыты жоқ.',
+    'problem.p2': 'Пікірлер мен хабарламалардағы шағымдар жазылушылармен әдеттегі хат-хабар арасында жоғалып кетеді.',
+    'problem.summary': 'Қорытынды',
+    'problem.p3': 'Тапсырысты ұзақ күту сияқты қайталанатын мәселе айлар бойы байқалмай қалады.',
+    'how.title': 'Шашыраңқы пікірлерден команда үшін нақты тапсырмалар тізіміне дейін',
+    'how.step1.title': 'Платформаларыңызды қосасыз',
+    'how.step1.p': '2GIS, Google, Яндекс Карта және әлеуметтік желілердегі бизнес карточкаларыңызға сілтеме бересіз, қызмет жаңа пікірлер мен комментарийлерді өзі жинайды.',
+    'how.step2.title': 'Қайталанатын шағымдарды табамыз',
+    'how.step2.p': 'Пікірлерді тақырыптар бойынша топтастырамыз: қызмет жылдамдығы, тазалық, тағамдардың сапасы, белгілі бір ауысымның жұмысы, және ең жиі кездесетінін көрсетеміз.',
+    'how.step3.title': 'Мысалдармен бірге талдау жібереміз',
+    'how.step3.p': 'Менеджер үшін дайын есеп: қандай мәселелер басым, олар неше рет аталды және растау ретінде нақты пікірлерден дәйексөздер.',
+    'form.title': 'Өтінім қалдырыңыз. Өнімге тегін қолжетімділікті бірінші болып алыңыз.',
+    'form.business.label': 'Бизнес атауы',
+    'form.business.placeholder': 'Мысалы, «Starbucks» кофеханасы',
+    'form.city.label': 'Қала',
+    'form.contact.label': 'Байланысу үшін телефон немесе email',
+    'form.contact.placeholder': '+7 ... немесе email',
+    'form.platforms.label': 'Қазір сіз туралы пікірлер қай жерде бар',
+    'form.other': 'Басқа',
+    'form.consent': 'Дербес деректерді өңдеуге келісемін',
+    'form.submit': 'Өтінімді жіберу',
+    'form.sending': 'Жіберілуде...',
+    'form.success': 'Рақмет! Сіз өнімге тегін қолжетімділікті бірінші алатындар қатарындасыз.',
+    'form.error': 'Жіберу сәтсіз аяқталды. Қайталап көріңіз.',
+    'footer.rights': 'Барлық құқықтар қорғалған.'
+  },
+  en: {
+    'nav.cta': 'Submit request',
+    'hero.title': 'All reviews about your business in one report, without reading manually.',
+    'hero.sub': 'We collect reviews from 2GIS, Google, Yandex Maps and social media, find what customers complain about most, and send managers a concrete list of what to fix, with examples.',
+    'hero.cta2': 'How it works',
+    'mock.front.text': 'The coffee was good, but <mark>I waited almost 20 minutes for my order</mark>, even though there weren\'t many people. The waitress <span class="flagged">didn\'t warn me about the delay</span>, I had to go ask myself.',
+    'mock.front.tag': 'Service speed · 14 similar reviews this month',
+    'mock.b1.text': 'The place is nice, but <mark>there were crumbs on the tables</mark>, and the menu <span class="flagged">hasn\'t been updated in a while</span>.',
+    'mock.b1.tag': 'Venue cleanliness · 6 similar reviews this month',
+    'mock.b2.text': 'I ordered delivery, they brought <mark>cold food</mark>, and the packaging was <span class="flagged">damaged</span>.',
+    'mock.b2.tag': 'Packaging quality · 9 similar reviews this month',
+    'problem.title': 'Reviews are scattered across seven places, and no one reads them systematically',
+    'problem.lead': 'We collect and analyze reviews and comments from all these sources in one place.',
+    'brand.yandexmaps': 'Yandex Maps',
+    'problem.src1': '2GIS · Google · Yandex Maps',
+    'problem.p1': 'New reviews appear every day across different platforms, and the manager doesn\'t have time to check each one.',
+    'problem.p2': 'Complaints in comments and messages get lost among regular conversations with followers.',
+    'problem.summary': 'Summary',
+    'problem.p3': 'A recurring problem, like long order wait times, can go unnoticed for months.',
+    'how.title': 'From scattered reviews to a task list for your team',
+    'how.step1.title': 'Connect your platforms',
+    'how.step1.p': 'You provide links to your business listings on 2GIS, Google, Yandex Maps, and social media, and the service automatically collects new reviews and comments.',
+    'how.step2.title': 'We find recurring complaints',
+    'how.step2.p': 'We group reviews by topic — service speed, cleanliness, food quality, a specific shift\'s performance — and show you what comes up most often.',
+    'how.step3.title': 'We send you a report with examples',
+    'how.step3.p': 'A ready-made report for the manager: which issues are priorities, how many times they were mentioned, and quotes from real reviews as evidence.',
+    'form.title': 'Leave a request. Be among the first to get free access to the product.',
+    'form.business.label': 'Business name',
+    'form.business.placeholder': 'E.g., Starbucks Coffee Shop',
+    'form.city.label': 'City',
+    'form.contact.label': 'Phone or email for contact',
+    'form.contact.placeholder': '+1 ... or email',
+    'form.platforms.label': 'Where do you currently have reviews',
+    'form.other': 'Other',
+    'form.consent': 'I agree to the processing of personal data',
+    'form.submit': 'Submit request',
+    'form.sending': 'Sending...',
+    'form.success': 'Thank you! You\'re among the first who will get free access to the product.',
+    'form.error': 'Something went wrong. Please try again.',
+    'footer.rights': 'All rights reserved.'
+  }
+};
+
+function applyLanguage(lang){
+  if(!translations[lang]) lang = 'ru';
+  const dict = translations[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if(dict[key] !== undefined) el.textContent = dict[key];
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const key = el.getAttribute('data-i18n-html');
+    if(dict[key] !== undefined) el.innerHTML = dict[key];
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const key = el.getAttribute('data-i18n-placeholder');
+    if(dict[key] !== undefined) el.setAttribute('placeholder', dict[key]);
+  });
+  document.querySelectorAll('.lang-switch button').forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+  });
+  document.documentElement.setAttribute('lang', lang);
+  try{ localStorage.setItem('site-lang', lang); }catch(e){}
+  window.currentLang = lang;
+}
+
+document.querySelectorAll('.lang-switch button').forEach(btn => {
+  btn.addEventListener('click', () => applyLanguage(btn.getAttribute('data-lang')));
+});
+
+let initialLang = 'en';
+try{
+  const saved = localStorage.getItem('site-lang');
+  if(saved && translations[saved]){
+    initialLang = saved;
+  }else{
+    const browserLang = (navigator.language || '').slice(0, 2);
+    if(browserLang === 'kk' || browserLang === 'ru') initialLang = browserLang;
+  }
+}catch(e){}
+applyLanguage(initialLang);
+
 async function bumpCounter(key){
   try{
     let current = 0;
@@ -478,7 +668,7 @@ document.getElementById('waitlistForm').addEventListener('submit', async (e) => 
   const submitBtn = document.getElementById('submitBtn');
   if(!document.getElementById('consentCheck').checked){ return; }
   submitBtn.disabled = true;
-  statusEl.textContent = 'Отправляем...';
+  statusEl.textContent = translations[window.currentLang || 'ru']['form.sending'];
   statusEl.className = 'status-msg';
 
   const platforms = Array.from(document.querySelectorAll('input[name="platform"]:checked')).map(el => el.value);
@@ -495,12 +685,12 @@ document.getElementById('waitlistForm').addEventListener('submit', async (e) => 
     if(!res.ok){ throw new Error('formspree error'); }
 
     bumpCounter('form_submissions_total');
-    statusEl.textContent = 'Спасибо! Вы в числе первых, кто получит бесплатный доступ к продукту.';
+    statusEl.textContent = translations[window.currentLang || 'ru']['form.success'];
     statusEl.className = 'status-msg ok';
     form.reset();
   }catch(err){
     console.error(err);
-    statusEl.textContent = 'Не получилось отправить. Попробуйте ещё раз.';
+    statusEl.textContent = translations[window.currentLang || 'ru']['form.error'];
     statusEl.className = 'status-msg err';
   }finally{
     submitBtn.disabled = !document.getElementById('consentCheck').checked;
