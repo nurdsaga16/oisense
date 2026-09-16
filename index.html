@@ -125,15 +125,27 @@
 
   /* ---------- problem block ---------- */
   .problem-block{
-    background:var(--surface);border-radius:24px;
+    background:linear-gradient(120deg, #414a5f, #576284, #414a5f);
+    background-size:220% 220%;
+    animation:gradientShift 18s ease-in-out infinite;
+    border-radius:24px;
     padding:56px 48px;
+    opacity:0;transform:translateY(18px);
+    transition:opacity .7s ease, transform .7s ease;
   }
+  .problem-block.in-view{opacity:1;transform:translateY(0);}
   .problem-block h2{color:var(--text);}
   .platform-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px;}
   .platform-badge{
     display:inline-flex;align-items:center;gap:11px;
     padding:11px 20px;border-radius:100px;
     background:rgba(36,42,56,.45);
+    transition:transform .18s ease, background .18s ease, box-shadow .18s ease;
+  }
+  .platform-badge:hover{
+    transform:translateY(-3px);
+    background:rgba(36,42,56,.65);
+    box-shadow:0 8px 18px rgba(0,0,0,.25);
   }
   .platform-badge svg{height:22px;width:22px;display:block;color:var(--text);stroke-width:1.9;}
   .platform-badge.icon-only{padding:11px;}
@@ -145,6 +157,12 @@
   .problem-cell:first-child{border-left:none;padding-left:0;}
   .problem-cell .src{font-size:.95rem;color:var(--text-dim);margin-bottom:10px;font-weight:500;}
   .problem-cell p{font-size:1.08rem;}
+
+  @keyframes gradientShift{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+  }
 
   /* ---------- how it works ---------- */
   .how-wrap{max-width:760px;margin:0 auto;}
@@ -159,7 +177,15 @@
   .step p{color:var(--text-dim);max-width:56ch;font-size:1.08rem;}
 
   /* ---------- form ---------- */
-  .form-section{background:var(--surface);border-radius:24px;margin:0 24px 24px;padding:64px 48px;max-width:1092px;}
+  .form-section{
+    background:linear-gradient(120deg, #414a5f, #576284, #414a5f);
+    background-size:220% 220%;
+    animation:gradientShift 18s ease-in-out infinite;
+    border-radius:24px;margin:0 24px 24px;padding:64px 48px;max-width:1092px;
+    opacity:0;transform:translateY(18px);
+    transition:opacity .7s ease, transform .7s ease;
+  }
+  .form-section.in-view{opacity:1;transform:translateY(0);}
   .form-wrap{max-width:620px;margin:0 auto;}
   form{margin-top:34px;display:flex;flex-direction:column;gap:20px;}
   .field label{display:block;font-size:1rem;color:var(--text-dim);margin-bottom:8px;}
@@ -177,9 +203,9 @@
     padding:11px 20px;border-radius:100px;
     border:1px solid rgba(245,246,250,.28);
     font-size:1.02rem;color:var(--text);
-    transition:background .15s ease, border-color .15s ease, color .15s ease;
+    transition:background .15s ease, border-color .15s ease, color .15s ease, transform .15s ease;
   }
-  .check-chip:hover .pill{border-color:rgba(245,246,250,.55);}
+  .check-chip:hover .pill{border-color:rgba(245,246,250,.55);transform:translateY(-2px);}
   .check-chip input:checked + .pill{
     background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600;
   }
@@ -207,6 +233,9 @@
   @media (prefers-reduced-motion: reduce){
     html{scroll-behavior:auto;}
     .btn-primary:hover{transform:none;}
+    .problem-block,.form-section{animation:none;opacity:1;transform:none;transition:none;}
+    .platform-badge,.check-chip .pill{transition:none;}
+    .platform-badge:hover,.check-chip:hover .pill{transform:none;}
   }
 </style>
 </head>
@@ -383,6 +412,20 @@ async function bumpCounter(key){
   }catch(e){
     console.error('storage error', e);
   }
+}
+
+if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+  document.querySelectorAll('.problem-block, .form-section').forEach(el => el.classList.add('in-view'));
+}else{
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('in-view');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.problem-block, .form-section').forEach(el => revealObserver.observe(el));
 }
 
 document.getElementById('navCta').addEventListener('click', () => {
